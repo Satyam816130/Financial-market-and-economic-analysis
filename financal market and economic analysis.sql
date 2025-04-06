@@ -112,4 +112,11 @@ SELECT
     ) AS mov_avg
 FROM MonthlyData
 
+--Calulate the Volatility of stock index 
+
+select stock_index, year(date) as year, stdev(close_price -open_price) as mkt_volatility
+from df_finance
+group by stock_index,year(date)
+order by mkt_volatility desc, year  desc 
+
 
